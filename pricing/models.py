@@ -1,6 +1,7 @@
 import json
 from django.db import models
 
+
 class Price(models.Model):
     COST_CALCULATION_CHOICES = [
         ("tokens", "Tokens"),
@@ -12,17 +13,19 @@ class Price(models.Model):
     model = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
     endpoint = models.CharField(max_length=100)
-    calculation_type = models.CharField(max_length=100, choices=COST_CALCULATION_CHOICES)
+    calculation_type = models.CharField(
+        max_length=100, choices=COST_CALCULATION_CHOICES
+    )
 
     size = models.CharField(max_length=100, default="")
     quality = models.CharField(max_length=100, default="")
 
     class Meta:
         unique_together = ["model", "company"]
-        
+
     def __str__(self):
         return f"{self.company} - {self.endpoint} - {self.model}"
-    
+
     def calculate_cost_using_tokens(self, response_body):
         # get usage from response_body
         usage = response_body.get("usage")
@@ -43,7 +46,6 @@ class Price(models.Model):
             return self.calculate_cost_using_images(request_body)
         else:
             raise ValueError("Invalid calculation type")
-        
 
     def calculate_cost_using_images(self, request_body):
         # get the number of images from the request body
@@ -53,4 +55,3 @@ class Price(models.Model):
         total_cost = round(total_cost, 6)
 
         return total_cost
-    

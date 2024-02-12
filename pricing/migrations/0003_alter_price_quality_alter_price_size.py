@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('pricing', '0002_remove_price_date'),
+        ("pricing", "0002_remove_price_date"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='price',
-            name='quality',
-            field=models.CharField(default='', max_length=100),
+            model_name="price",
+            name="quality",
+            field=models.CharField(default="", max_length=100),
         ),
         migrations.AlterField(
-            model_name='price',
-            name='size',
-            field=models.CharField(default='', max_length=100),
+            model_name="price",
+            name="size",
+            field=models.CharField(default="", max_length=100),
         ),
     ]

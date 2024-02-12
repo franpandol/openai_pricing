@@ -6,18 +6,19 @@ from django.db.utils import IntegrityError
 
 User = get_user_model()
 
+
 class Command(BaseCommand):
-    help = 'Create a Django superuser if it does not exist'
+    help = "Create a Django superuser if it does not exist"
 
     def handle(self, *args, **options):
         print("run createsuperuser.py")
-        if not User.objects.filter(username='admin').exists():
+        if not User.objects.filter(username="admin").exists():
             try:
                 User.objects.create_superuser(
-                    'admin',
-                    'admin@example.com',
-                    'adminpassword'
+                    "admin", "admin@example.com", "adminpassword"
                 )
-                self.stdout.write(self.style.SUCCESS('Successfully created a new superuser'))
+                self.stdout.write(
+                    self.style.SUCCESS("Successfully created a new superuser")
+                )
             except IntegrityError:
-                self.stdout.write(self.style.WARNING('Superuser already exists'))
+                self.stdout.write(self.style.WARNING("Superuser already exists"))
