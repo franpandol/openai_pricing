@@ -1,4 +1,4 @@
-# My Django Project
+# OpenAI Pricing API
 
 This Django project provides a RESTful API to calculate costs based on the usage of OpenAI's GPT and image generation models.
 
