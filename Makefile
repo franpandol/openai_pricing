@@ -9,6 +9,10 @@ SUPERUSER_PASSWORD ?= admin
 run:
 	docker-compose up
 
+# Run the app
+test:
+	docker-compose run web python manage.py test
+
 # Seed the database with pricing data
 seed_pricing:
 	docker-compose run web python manage.py seed_pricings

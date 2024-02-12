@@ -4,26 +4,6 @@ from django.test import TestCase
 
 
 class PriceModelTestCase(TestCase):
-    sample_request = """
-        {
-            "model": "gpt-4",
-            "messages": [
-                {
-                "role": "user",
-                "content": "give me a haiku about planets"
-                },
-                {
-                "role": "system",
-                "content": "Spheres of mystique dance,\nIn cosmic ballet they whirl,\nPlanetary trance."
-                },
-                {
-                "role": "user",
-                "content": "can you include pluto?"
-                }
-            ]
-        }
-    """
-    sample_request_encoded_base64 = "ewogICJtb2RlbCI6ICJncHQtNCIsCiAgIm1lc3NhZ2VzIjogWwogICAgewogICAgICAicm9sZSI6ICJ1c2VyIiwKICAgICAgImNvbnRlbnQiOiAiZ2l2ZSBtZSBhIGhhaXVrIHdpdGggcGxhbnRzIgogICAgfSwKICAgIHsKICAgICAgInJvbGUiOiAic3lzdGVtIiwKICAgICAgImNvbnRlbnQiOiAiU3BoZXJlcyBvZiBteXN0aXF1ZSBkYW5jZSwKICAgIH0KICBdCn0="
 
     def setUp(self):
         from pricing.models import Price
@@ -32,7 +12,6 @@ class PriceModelTestCase(TestCase):
             base_price=10.00,
             prompt_price=5.00,
             completion_price=7.00,
-            date="2024-02-12",
             model="Test Model",
             company="Test Company",
             endpoint="Test Endpoint",
